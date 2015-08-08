@@ -5,7 +5,7 @@ dl <- function () {
     # download, unzip household_power_consumption zip file and return name of csv file 
 
     datafile <- "household_power_consumption.txt"
-    if (!file.exists(datafile)){
+    if (file.exists(datafile)){
         return(datafile)
     }
 
@@ -13,10 +13,10 @@ dl <- function () {
     if (!file.exists(destfile)){
         download.file("https://d396qusza40orc.cloudfront.net/exdata%2Fdata%2Fhousehold_power_consumption.zip", method="wininet", 
             destfile=destfile)
-        unzip(dfile)
-        if (!file.exists(destfile)){
-            stop(paste("Could not find datafile", datafile, "after download and unzip operations"))
-        }
+    }
+    unzip(destfile)
+    if (!file.exists(datafile)){
+        stop(paste("Could not find datafile", datafile, "after download and unzip operations"))
     }
     datafile
 }
