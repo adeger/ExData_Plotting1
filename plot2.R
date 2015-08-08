@@ -1,11 +1,12 @@
-# Draw the first plot for Exploratory Data Analysis, Project #1
+# Routine to draw plot2 for Exploratory Data Analysis
 
-plot2 <- function(){
+plot2 <- function(dest="plot2.png"){
+    # Draw the second plot for Exploratory Data Analysis, Project #1
+   
     source("plot_utils.R")
     df <- read_limited(dl())
-    png("plot2.png")
-    plot(df$Date_Time, df$Global_active_power, type="l",
-            ylab="Global Active Power (kilowatts)", xlab="",
-            col="black")
-    dev.off()
+    args = list(x=df$Date_Time, y=df$Global_active_power, type="l",
+                ylab="Global Active Power (kilowatts)", xlab="",
+                col="black")
+    wrap_plot(plot, args, dest)
 }
